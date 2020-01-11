@@ -11,6 +11,11 @@ namespace Tic_Tac_Toe
                             
             {'7','8','9' } 
         };
+
+
+
+        static int turns = 0;
+
         static void Main(string[] args)
         {
             int player = 2;
@@ -43,9 +48,11 @@ namespace Tic_Tac_Toe
 
                 foreach( char playerChar in playerChars)
                 {
-                    if((board[0,0] == playerChar && board[0,1]==playerChar && board[0, 2] == playerChar) || (board[0, 0] == playerChar && board[1, 0] == playerChar && board[2, 0] == playerChar) 
-                        || (board[0, 2] == playerChar && board[1, 2] == playerChar && board[2, 2] == playerChar) ||
-                        (board[0, 1] == playerChar && board[1, 1] == playerChar && board[2, 1] == playerChar) || (board[0, 1] == playerChar && board[1, 1] == playerChar && board[2, 1] == playerChar)
+                    if((board[0,0] == playerChar && board[0,1]==playerChar && board[0, 2] == playerChar) 
+                        || (board[0, 0] == playerChar && board[1, 0] == playerChar && board[2, 0] == playerChar) 
+                        || (board[0, 2] == playerChar && board[1, 2] == playerChar && board[2, 2] == playerChar) 
+                        |(board[0, 1] == playerChar && board[1, 1] == playerChar && board[2, 1] == playerChar) 
+                        || (board[0, 1] == playerChar && board[1, 1] == playerChar && board[2, 1] == playerChar)
                         || (board[0, 0] == playerChar && board[1, 1] == playerChar && board[2, 2] == playerChar)
                         || (board[0, 2] == playerChar && board[1, 1] == playerChar && board[2, 0] == playerChar))
                     {
@@ -57,8 +64,17 @@ namespace Tic_Tac_Toe
                         {
                             Console.WriteLine("\nPlayer 1 has won!");
                         }
-
-                        //todo reset field
+                        Console.WriteLine("Please press any key to reset the game");
+                        Console.ReadKey();
+                        ResetField();
+                    }
+                    else if(turns == 10)
+                    {
+                        Console.WriteLine("Draw");
+                        Console.WriteLine("Please press any key to reset the game");
+                        Console.ReadKey();
+                        ResetField();
+                        break;
                     }
                    
 
@@ -115,8 +131,24 @@ namespace Tic_Tac_Toe
 
             Console.Clear();
                 Console.WriteLine( "{0}|{1}|{2}\n{3}|{4}|{5}\n{6}|{7}|{8}",board[0,0], board[0,1],board[0,2],board[1,0],board[1,1],board[1,2], board[2,0],board[2,1],board[2,2] );
+            turns++;
        
             }
+        public static void ResetField()
+        {
+
+           char[,] boardInitial = {
+            {'1','2','3'},
+
+            { '4','5','6'},
+
+            {'7','8','9' }
+        };
+            board = boardInitial;
+            turns = 0;
+            DisplayBoard();
+            
+        }
         
         public static void EnterXorO(int player, int input) {
 

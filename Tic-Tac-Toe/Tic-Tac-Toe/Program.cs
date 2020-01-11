@@ -16,6 +16,7 @@ namespace Tic_Tac_Toe
             int player = 2;
             int input = 0;
             bool checkIfCorrect = true;
+            
 
             
 
@@ -35,10 +36,63 @@ namespace Tic_Tac_Toe
                     EnterXorO(player, input);
                 }
                 DisplayBoard();
+
+                //check winning condition
+
+                char[] playerChars = { 'x', 'O' };
+
+                foreach( char playerChar in playerChars)
+                {
+                    if((board[0,0] == playerChar && board[0,1]==playerChar && board[0, 2] == playerChar) || (board[0, 0] == playerChar && board[1, 0] == playerChar && board[2, 0] == playerChar) 
+                        || (board[0, 2] == playerChar && board[1, 2] == playerChar && board[2, 2] == playerChar) ||
+                        (board[0, 1] == playerChar && board[1, 1] == playerChar && board[2, 1] == playerChar) || (board[0, 1] == playerChar && board[1, 1] == playerChar && board[2, 1] == playerChar)
+                        || (board[0, 0] == playerChar && board[1, 1] == playerChar && board[2, 2] == playerChar)
+                        || (board[0, 2] == playerChar && board[1, 1] == playerChar && board[2, 0] == playerChar))
+                    {
+                        Console.WriteLine("We have a winner");
+                    }
+                   
+
+                }
+
+
+
                 do
                 {
                     Console.Write("\nPlayer {0} Choose your field!", player);
-                    input = Convert.ToInt32(Console.ReadLine());
+                    try
+                    {
+                        input = Convert.ToInt32(Console.ReadLine());
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Please enter a number!");
+                    }
+
+                    if ((input == 1) && (board[0, 0] == '1'))
+                        checkIfCorrect = true;
+                    else if ((input == 2) && (board[0, 1] == '2'))
+                        checkIfCorrect = true;
+                    else if ((input == 3) && (board[0, 2] == '3'))
+                        checkIfCorrect = true;
+                    else if ((input == 4) && (board[1, 0] == '4'))
+                        checkIfCorrect = true;
+                    else if ((input == 5) && (board[1, 1] == '5'))
+                        checkIfCorrect = true;
+                    else if ((input == 6) && (board[1, 2] == '6'))
+                        checkIfCorrect = true;
+                    else if ((input == 7) && (board[2, 0] == '7'))
+                        checkIfCorrect = true;
+                    else if ((input == 8) && (board[2, 1] == '8'))
+                        checkIfCorrect = true;
+                    else if ((input == 9) && (board[2, 2] == '9'))
+                        checkIfCorrect = true;
+                    else
+                    {
+                        Console.WriteLine("\nincorrect input. Please use another field");
+                        checkIfCorrect = false;
+                    }
+
                 }
                 while (!checkIfCorrect);
 

@@ -49,7 +49,16 @@ namespace Tic_Tac_Toe
                         || (board[0, 0] == playerChar && board[1, 1] == playerChar && board[2, 2] == playerChar)
                         || (board[0, 2] == playerChar && board[1, 1] == playerChar && board[2, 0] == playerChar))
                     {
-                        Console.WriteLine("We have a winner");
+                        if (playerChar == 'x')
+                        {
+                            Console.WriteLine("\nPlayer 2 has won!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nPlayer 1 has won!");
+                        }
+
+                        //todo reset field
                     }
                    
 

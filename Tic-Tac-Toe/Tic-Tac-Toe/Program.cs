@@ -16,11 +16,12 @@ namespace Tic_Tac_Toe
             int player = 2;
             int input = 0;
             bool checkIfCorrect = true;
-            DisplayBoard();
 
             
 
             do {
+
+             
 
                 if (player == 2)
                 {
@@ -33,7 +34,7 @@ namespace Tic_Tac_Toe
                     player = 2;
                     EnterXorO(player, input);
                 }
-
+                DisplayBoard();
                 do
                 {
                     Console.Write("\nPlayer {0} Choose your field!", player);
@@ -48,8 +49,8 @@ namespace Tic_Tac_Toe
 
         public static void DisplayBoard()
         {
- 
 
+            Console.Clear();
                 Console.WriteLine( "{0}|{1}|{2}\n{3}|{4}|{5}\n{6}|{7}|{8}",board[0,0], board[0,1],board[0,2],board[1,0],board[1,1],board[1,2], board[2,0],board[2,1],board[2,2] );
        
             }
@@ -62,7 +63,7 @@ namespace Tic_Tac_Toe
                 playerSign = 'x';
             else if (player == 2)
                 playerSign = 'O';
-            switch (player)
+            switch (input)
             {
                 case 1: board[0, 0] = playerSign; break;
                 case 2: board[0, 1] = playerSign; break;

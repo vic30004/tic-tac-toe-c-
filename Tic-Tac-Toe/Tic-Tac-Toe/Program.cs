@@ -33,8 +33,13 @@ namespace Tic_Tac_Toe
                     player = 2;
                     EnterXorO(player, input);
                 }
-            
-                
+
+                do
+                {
+                    Console.Write("\nPlayer {0} Choose your field!", player);
+                    input = Convert.ToInt32(Console.ReadLine());
+                }
+                while (!checkIfCorrect);
 
             }
 
